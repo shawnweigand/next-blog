@@ -12,7 +12,7 @@ export default function Home() {
         <h1 className="py-10 text-center text-3xl text-indigo-600 font-bold ">MyBlog</h1>
         
         {/* Form */}
-        <div>
+        <div className="grid">
           {/* Title */}
           <h2 className="text-black">Title</h2>
           <input className="w-full p-4 mt-4 mb-10 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500" placeholder="Write your blog title here..." />
@@ -30,6 +30,8 @@ export default function Home() {
               <input className="w-full p-4 mt-4 mb-10 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500" placeholder="Your last name..." />
             </div>          
           </div>
+          {/* Submit */}
+          <button className="place-self-center w-1/4 py-2 px-6 mt-4 mb-10 text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Submit</button>
         </div>
       </div>
 
