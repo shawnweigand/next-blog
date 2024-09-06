@@ -8,6 +8,7 @@ export default function Home() {
         <p className="text-center text-3xl font-bold text-indigo-600">MyBlog</p>
         {/* <img alt="" src="https://tailwindui.com/img/logos/workcation-logo-indigo-600.svg" className="mx-auto h-12" /> */}
         <figure className="mt-10">
+          <textarea className="w-full h-32 max-h-64 p-4 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500" placeholder="Write your blog post here..." />
           <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
             <p>
               “Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias
