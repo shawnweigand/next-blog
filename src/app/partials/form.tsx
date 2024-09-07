@@ -3,9 +3,14 @@ import { FormEvent } from "react"
 
 export default function Form() {
 
-    async function onSubmit(event: FormEvent) {
+    async function onSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
-        console.log("Form submitted")
+
+        const formData = new FormData(event.currentTarget)
+
+        console.log(formData.forEach((value, key) => {
+            console.log(key + ":", value)
+        }))
     }
 
     return (
