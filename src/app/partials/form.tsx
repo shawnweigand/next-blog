@@ -66,6 +66,13 @@ export default function Form() {
         setErrors(validation)
 
         console.log('Errors:', validation)
+
+        let valid = Object.values(validation).every((x) => x === '')
+
+        console.log('Form is valid: ', valid)
+
+        return valid
+
     }
 
     return (
