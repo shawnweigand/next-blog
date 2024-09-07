@@ -29,9 +29,22 @@ export default function Form() {
             last: form.get('last') as string
         })
 
-        validateForm()
-
         console.log('Form data: ', formData)
+
+        let valid = validateForm()
+
+        if (valid) {
+            console.log('Form is valid')
+            const response = await fetch('/api/blog', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+        } else {
+            console.log('Form is invalid')
+        }
     }
 
     const onChange = (e: any) => {
@@ -67,12 +80,7 @@ export default function Form() {
 
         console.log('Errors:', validation)
 
-        let valid = Object.values(validation).every((x) => x === '')
-
-        console.log('Form is valid: ', valid)
-
-        return valid
-
+        return Object.values(validation).every((x) => x === '')
     }
 
     return (
