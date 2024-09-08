@@ -42,6 +42,12 @@ export default function Form() {
                 },
                 body: JSON.stringify(formData)
             })
+            setFormData({
+                title: '',
+                content: '',
+                first: '',
+                last: ''
+            })
         } else {
             console.log('Form is invalid')
         }
