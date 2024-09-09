@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysqldb
+    ports:
+      - "3306:3306"
+    networks:
+      - blog-network
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: blog
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nextjs
+    depends_on:
+      - mysql
+    networks:
+      - blog-network
+    volumes:
+      - nextjs-volume:/app/src
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    command: npm run dev
+    environment:
+      DATABASE_HOST: mysql
+      DATABASE_USER: user
+      DATABASE_PASSWORD: password
+      DATABASE_NAME: blog
+
+networks:
+  blog-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    driver: local
+  nextjs-volume:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./src
+      o: bind
