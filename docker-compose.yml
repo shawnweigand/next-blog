@@ -32,10 +32,10 @@ services:
       - "3000:3000"
     command: npm run dev
     environment:
-      DATABASE_HOST: localhost
+      DATABASE_HOST: mysqldb
       DATABASE_USER: user
       DATABASE_PASSWORD: password
-      DATABASE_NAME: blog
+      DATABASE_NAME: blogs
 
 networks:
   blog-network:
