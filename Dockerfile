@@ -21,6 +21,3 @@ EXPOSE 3000
 
 # Start the Next.js application
 CMD ["npm", "start"]
-
-# Prepare the database
-ENTRYPOINT [ "node", "./src/scripts/setup.js" ]

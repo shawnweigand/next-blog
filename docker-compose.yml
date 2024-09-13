@@ -12,7 +12,7 @@ services:
       - mysql_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: blog
+      MYSQL_DATABASE: blogs
       MYSQL_USER: user
       MYSQL_PASSWORD: password
 

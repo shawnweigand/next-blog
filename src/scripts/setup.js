@@ -6,7 +6,7 @@ async function createTable() {
 
   try {
     await connection.query(`
-      CREATE TABLE IF NOT EXISTS blog (
+      CREATE TABLE IF NOT EXISTS blogs (
         id INT AUTO_INCREMENT PRIMARY KEY,
         title VARCHAR(255) NOT NULL,
         content TEXT NOT NULL,
@@ -15,7 +15,7 @@ async function createTable() {
         createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
     `);
-    console.log('Blog table created or already exists');
+    console.log('Blogs table created or already exists');
   } finally {
     connection.release();
   }
