@@ -11,7 +11,7 @@ export default function Home() {
       
       {/* Content */}
       <div className="mx-auto max-w-2xl lg:max-w-4xl">
-        <h1 className="py-10 text-center text-3xl text-indigo-600 font-bold ">MyBlog</h1>
+        <h1 className="py-10 text-center text-3xl text-indigo-600 font-bold">MyBlog</h1>
         
         {/* Form */}
         <Form />
