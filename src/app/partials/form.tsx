@@ -1,7 +1,7 @@
 'use client';
 import { FormEvent, use, useEffect, useRef, useState } from "react"
 
-export default function Form(props: any) {
+export default function Form({ refresh, setRefresh }: { refresh: boolean, setRefresh: Function }) {
 
     const [formData, setFormData] = useState({
         title: '',
@@ -52,7 +52,7 @@ export default function Form(props: any) {
             console.log('Form is invalid')
         }
 
-        props.setRefresh(!props.refresh)
+        setRefresh(!refresh)
     }
 
     const onChange = (e: any) => {
