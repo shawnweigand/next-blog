@@ -28,18 +28,18 @@ export default function List(props: any) {
             <div className="text-black" >
                 {props.blogs.map((blog: any, index: number) => (
                     <div key={index} className="grid grid-cols-4">
-                        <div className="text-black col-start-1 col-span-1 mb-24">
+                        <div className="text-black text-right col-start-1 col-span-1 mb-24">
                             <h1>{formatDate(blog.createdAt).date}</h1>
                             <h1>{formatDate(blog.createdAt).time}</h1>
                         </div>
-                        <div className="col-start-2 col-span-1">
-                            <div className="w-5 h-5 ml-14 bg-indigo-600 rounded-full"></div>
-                            {index < props.blogs.length - 1 && <div className="ml-16 h-full w-1 bg-indigo-300"></div>}
+                        <div className="justify-self-center col-start-2 col-span-1">
+                            <div className="w-5 h-5 bg-indigo-600 rounded-full"></div>
+                            {index < props.blogs.length - 1 && <div className="ml-2 h-full w-1 bg-indigo-300"></div>}
                         </div>
                         <div className="col-start-3 col-span-2 mb-24">
-                            <h2>{blog.title}</h2>
-                            <p>{blog.content}</p>
-                            <p>{blog.first_name} {blog.last_name}</p>
+                            <h2 className="text-lg font-bold pb-2">{blog.title}</h2>
+                            <p className="pb-2">{blog.content}</p>
+                            <p className="text-indigo-600">{blog.first_name} {blog.last_name}</p>
                         </div>
                     </div>
                 ))}
