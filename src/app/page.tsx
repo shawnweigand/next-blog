@@ -1,4 +1,5 @@
 import Form from './partials/form';
+import List from './partials/list';
 
 export default function Home() {
   return (
@@ -14,6 +15,9 @@ export default function Home() {
         
         {/* Form */}
         <Form />
+
+        {/* List */}
+        <List />
       </div>
 
     </section>
