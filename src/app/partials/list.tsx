@@ -9,7 +9,6 @@ export default function List() {
         const response = await fetch('/api/blog')
         console.log('Response: ', response)
         const data = await response.json()
-        data.formatedCreatedAt = formatDate(data.createdAt)
         setBlogs([...data].sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
     }
 
