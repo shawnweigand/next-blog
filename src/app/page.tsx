@@ -1,7 +1,24 @@
+'use client';
+import { useEffect, useState } from 'react';
 import Form from './partials/form';
 import List from './partials/list';
 
 export default function Home() {
+
+  const [blogs, setBlogs] = useState([])
+  const [refresh, setRefresh] = useState(false)
+
+  async function fetchBlogs() {
+      const response = await fetch('/api/blog')
+      console.log('Response: ', response)
+      const data = await response.json()
+      setBlogs([...data].sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
+  }
+
+  useEffect(() => {
+    fetchBlogs()
+}, [refresh])
+
   return (
     <section className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-8 min-h-screen">
 
@@ -14,10 +31,10 @@ export default function Home() {
         <h1 className="py-10 text-center text-3xl text-indigo-600 font-bold">MyBlog</h1>
         
         {/* Form */}
-        <Form />
+        <Form refresh={refresh} setRefresh={setRefresh} />
 
         {/* List */}
-        <List />
+        <List blogs={blogs}/>
       </div>
 
     </section>
