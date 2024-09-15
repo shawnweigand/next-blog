@@ -9,7 +9,7 @@ export default function Home() {
   const [refresh, setRefresh] = useState(false)
 
   async function fetchBlogs() {
-      const response = await fetch('/api/blog')
+      const response = await fetch('/api/blogs')
       console.log('Response: ', response)
       const data = await response.json()
       setBlogs([...data].sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))

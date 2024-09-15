@@ -35,7 +35,7 @@ export default function Form({ refresh, setRefresh }: { refresh: boolean, setRef
 
         if (valid) {
             console.log('Form is valid')
-            const response = await fetch('/api/blog', {
+            const response = await fetch('/api/blogs', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
