@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import Form from './partials/form';
 import List from './partials/list';
+import Loading from './components/loading';
 
 export default function Home() {
 
@@ -17,7 +18,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchBlogs()
-}, [refresh])
+  }, [refresh])
 
   return (
     <section className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-8 min-h-screen">
