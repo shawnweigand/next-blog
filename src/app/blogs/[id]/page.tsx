@@ -38,6 +38,15 @@ export default function Blog({ params }: { params: { id: string } }) {
         return { date: formattedDate, time: formattedTime }
     }
 
+    async function onClickHandler() {
+        const response = await fetch(`/api/blogs/${params.id}`, {
+            method: 'DELETE'
+        })
+        if (response.status !== 200) {
+            console.log('Error deleting blog')
+        }
+    }
+
     console.log('Blog: ', blog)
 
     return (
@@ -52,7 +61,7 @@ export default function Blog({ params }: { params: { id: string } }) {
                     <p className="text-gray-500 text-center italic">{formatDate(blog.createdAt).date} at {formatDate(blog.createdAt).time}</p>  
                     <p className="text-black py-16">{blog.content}</p>
                     <Link href={'/'} className="w-32 py-2 px-6 text-white text-center bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Back</Link>
-                    <Link href={'/'} className="w-32 py-2 px-6 text-white text-center bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">Delete</Link>
+                    <a href={'/'} className="w-32 py-2 px-6 text-white text-center bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2" onClick={onClickHandler}>Delete</a>
                 </div>
             }
         </div>
