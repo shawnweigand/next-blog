@@ -20,7 +20,7 @@ export async function POST(request: Request) {
         );
         console.log('Result: ', result);
         response.status = 201
-        response.body = { id: result.insertId, title, content, first, last };
+        response.body = { id: ('insertId' in result) ? result.insertId : 0, title, content, first, last };
       } catch (error) {
         console.error(error);
         response.status = 500

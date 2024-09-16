@@ -3,9 +3,17 @@ import { use, useEffect, useState } from "react";
 import Loading from "../../components/loading";
 import Link from "next/link";
 
+interface Blog {
+    title: string;
+    first_name: string;
+    last_name: string;
+    createdAt: string; // Assuming createdAt is a string, adjust if it's a Date object
+    content: string;
+}
+
 export default function Blog({ params }: { params: { id: string } }) {
     
-    const [blog, setBlog] = useState({});
+    const [blog, setBlog] = useState<Blog | null>(null);
 
     async function fetchBlog(id: string) {
         const response = await fetch(`/api/blogs/${id}`)
@@ -21,13 +29,13 @@ export default function Blog({ params }: { params: { id: string } }) {
     function formatDate(timestamp: string) {
         const date = new Date(timestamp)
 
-        const dateOptions = {
+        const dateOptions: Intl.DateTimeFormatOptions = {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
         }
 
-        const timeOptions = {
+        const timeOptions: Intl.DateTimeFormatOptions = {
             hour: 'numeric',
             minute: 'numeric',
         }
@@ -51,7 +59,7 @@ export default function Blog({ params }: { params: { id: string } }) {
 
     return (
         <div className="flex items-center justify-center h-screen bg-white">
-            {!blog.title ? 
+            {!blog ? 
                 
                 <Loading /> :
                 

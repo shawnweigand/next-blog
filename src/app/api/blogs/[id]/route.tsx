@@ -21,12 +21,15 @@ export async function GET(request: Request, { params }: { params: { id: string }
     try {
         const [blogs] = await pool.query('SELECT * FROM blogs WHERE id = ?', [id]);
         
-        if (blogs.length === 0) {
+        if (Array.isArray(blogs) && blogs.length === 0) {
             response.status = 404;
             response.body = { message: 'Blog not found' };
-        } else {
-            response.body = blogs[0];
+        } else if (!Array.isArray(blogs)) {
+            // Handle the case where blogs is not an array
+            response.status = 500;
+            response.body = { message: 'Unexpected query result' };
         }
+        
     } catch (error) {
         console.error(error);
         response.status = 500;
@@ -59,7 +62,7 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
     try {
         const [result] = await pool.query('DELETE FROM blogs WHERE id = ?', [id]);
         
-        if (result.affectedRows === 0) {
+        if ('affectedRows' in result && result.affectedRows === 0) {
             response.status = 404;
             response.body = { message: 'Blog not found' };
         } else {

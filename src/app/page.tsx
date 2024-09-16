@@ -4,9 +4,17 @@ import Form from './partials/form';
 import List from './partials/list';
 import Loading from './components/loading';
 
+interface Blog {
+  title: string;
+  first_name: string;
+  last_name: string;
+  createdAt: string; // Assuming createdAt is a string, adjust if it's a Date object
+  content: string;
+}
+
 export default function Home() {
 
-  const [blogs, setBlogs] = useState([])
+  const [blogs, setBlogs] = useState<Blog[]>([])
   const [refresh, setRefresh] = useState(false)
 
   async function fetchBlogs() {
