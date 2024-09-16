@@ -4,8 +4,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 To run with Docker:
 ```bash
-make start
-node src/scripts/setup.js
+docker compose up -d
+docker exec nextjs node src/scripts/setup.js
 ```
 
 To run locally:
