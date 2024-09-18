@@ -17,7 +17,6 @@ export default function Blog({ params }: { params: { id: string } }) {
 
     async function fetchBlog(id: string) {
         const response = await fetch(`/api/blogs/${id}`)
-        console.log('Response: ', response.body)
         const data = await response.json()
         setBlog(data)
     }

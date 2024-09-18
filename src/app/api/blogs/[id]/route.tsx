@@ -19,16 +19,14 @@ export async function GET(request: Request, { params }: { params: { id: string }
     }
 
     try {
-        const [blogs] = await pool.query('SELECT * FROM blogs WHERE id = ?', [id]);
+        const [blogs] = JSON.parse(JSON.stringify(await pool.query('SELECT * FROM blogs WHERE id = ?', [id])));
         
-        if (Array.isArray(blogs) && blogs.length === 0) {
+        if (blogs.length === 0) {
             response.status = 404;
             response.body = { message: 'Blog not found' };
-        } else if (!Array.isArray(blogs)) {
-            // Handle the case where blogs is not an array
-            response.status = 500;
-            response.body = { message: 'Unexpected query result' };
         }
+
+        response.body = blogs[0];
         
     } catch (error) {
         console.error(error);
