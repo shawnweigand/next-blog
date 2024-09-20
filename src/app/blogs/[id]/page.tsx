@@ -24,7 +24,7 @@ export default function Blog({ params }: { params: { id: string } }) {
         fetchBlog(params.id)
     }, [])
 
-    function formatDate(timestamp: string) {
+    function formatDate(timestamp: string = '') {
         const date = new Date(timestamp)
 
         const dateOptions: Intl.DateTimeFormatOptions = {
