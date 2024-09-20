@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import Form from './partials/form';
 import List from './partials/list';
-import Loading from './components/loading';
 
 interface Blog {
   title: string;

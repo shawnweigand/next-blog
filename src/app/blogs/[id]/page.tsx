@@ -1,6 +1,5 @@
 'use client';
 import { use, useEffect, useState } from "react";
-import Loading from "../../components/loading";
 import Link from "next/link";
 
 interface Blog {
@@ -58,19 +57,14 @@ export default function Blog({ params }: { params: { id: string } }) {
 
     return (
         <div className="flex items-center justify-center h-screen bg-white">
-            {!blog ? 
-                
-                <Loading /> :
-                
-                <div className="grid place-items-center m-48 space-y-4">
-                    <h1 className="text-indigo-600 text-3xl text-center">{blog.title}</h1>
-                    <p className="text-gray-500 text-center">By {blog.first_name} {blog.last_name}</p>
-                    <p className="text-gray-500 text-center italic">{formatDate(blog.createdAt).date} at {formatDate(blog.createdAt).time}</p>  
-                    <p className="text-black py-16">{blog.content}</p>
-                    <Link href={'/'} className="w-32 py-2 px-6 text-white text-center bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Back</Link>
-                    <a href={'/'} className="w-32 py-2 px-6 text-white text-center bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2" onClick={onClickHandler}>Delete</a>
-                </div>
-            }
+            <div className="grid place-items-center m-48 space-y-4">
+                <h1 className="text-indigo-600 text-3xl text-center">{blog?.title}</h1>
+                <p className="text-gray-500 text-center">By {blog?.first_name} {blog?.last_name}</p>
+                <p className="text-gray-500 text-center italic">{formatDate(blog?.createdAt).date} at {formatDate(blog?.createdAt).time}</p>  
+                <p className="text-black py-16">{blog?.content}</p>
+                <Link href={'/'} className="w-32 py-2 px-6 text-white text-center bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Back</Link>
+                <a href={'/'} className="w-32 py-2 px-6 text-white text-center bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2" onClick={onClickHandler}>Delete</a>
+            </div>
         </div>
     )
 }
