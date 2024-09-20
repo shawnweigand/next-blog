@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
-import Form from './partials/form';
-import List from './partials/list';
+import Form from './components/form';
+import List from './components/list';
 
 interface Blog {
   title: string;
